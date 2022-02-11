@@ -4,6 +4,9 @@
   box-sizing: border-box;
   scroll-snap-type: y mandatory;
 }
+body {
+  overflow-x: hidden;
+}
 nav {
   width: 100vw;
   height: 10vh;
@@ -14,6 +17,22 @@ nav {
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.7);
   border: 1px solid black;
+  z-index: 8;
+}
+nav h1 {
+  font-family: sans-serif;
+  margin-left: 1rem;
+}
+.menu {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: black;
+  color: white;
+  z-index: 9;
+  display: none;
 }
 nav div {
   display: flex;
@@ -55,4 +74,30 @@ section h1 {
   font-size: 5rem;
   text-align: center;
   margin-top: 10vh;
+}
+@media screen and (max-width: 786px) {
+  nav ul {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60vw;
+    height: 100vh;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(1rem);
+  }
+  nav ul li {
+    margin: 1.5rem;
+  }
+  .move {
+    transform: translateX(102%);
+  }
+  .menu {
+    display: flex;
+    cursor: pointer;
+    font-family: sans-serif;
+  }
+  section h1 {
+    font-size: 3rem;
+  }
 }
