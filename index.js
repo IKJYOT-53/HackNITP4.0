@@ -32,3 +32,24 @@ function initMap() {
         }
     })
 }
+function geoFindMe() {
+  const status = document.querySelector("#status");
+  console.log(status)
+  function success(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    status.innerText="NGO's Near :" + String(latitude) +" , " + String(longitude)
+  }
+
+  function error() {
+    status.textContent = "Unable to retrieve your location";
+  }
+
+  if (!navigator.geolocation) {
+    status.textContent = "Geolocation is not supported by your browser";
+  } else {
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+}
+
+document.querySelector("#find-me").addEventListener("click", geoFindMe);
